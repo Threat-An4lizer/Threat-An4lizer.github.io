@@ -7,8 +7,6 @@ tags: [bienvenida, analista]
 categories: Bienvenida
 ---
 
-# Bienvenidos al canal del Analista de Seguridad
-
 Si te encuentras leyendo esto posiblemente sea porque eres un apasionado de la seguridad informática, especialmente del Blue Team.
 En primer lugar, creo que debo presentarme. Mi nombre es Ignacio Serra, soy analista de seguridad (L2) para la empresa S2GRUPO. Una parte muy importante de nuestro trabajo es el análisis y la investigación de las nuevas amenazas que surgen casi a diario para intentar neutralizarlas antes de que afecten a los sistemas de nuestras empresas.
 Por ello, el objetivo principal de esta web es:
