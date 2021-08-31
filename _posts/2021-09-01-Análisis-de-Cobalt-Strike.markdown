@@ -15,18 +15,32 @@ categories: BlueTeam
 
   * Cargar y descargar cargas útiles y archivos: 
   	* ``Download [archivo] | Upload [archivo]``
+
+
   * Ejecución de comandos:
   	* ``shell [comando] | run [comando] | powershell [comando]``
+
+
   * Inyección de proceso: 
   	* ``inject <pid> | dllinject <pid> (para inyección de dll reflectante) | dllload <pid> ( para cargar una DLL en el disco en la memoria) | spawnto <arch> <full-exe-path> ( para vaciar el proceso).``
+
+
   * Proxy de SOCKS:
   	*  ``socks <número de puerto>``
+
+
   * Escalada de privilegios:
   	*  ``getsystem  (suplantación de la cuenta del SISTEMA utilizando canalizaciones con nombre) | elevate svc-exe [listener]  (crea un servicio que ejecuta una carga útil como SISTEMA)``
+
+
   * Hashes y credenciales:
   	*  ``hashdump | logonpasswords (usando Mimikatz) | chromedump  (Recuperar contraseñas de Google Chrome del usuario actual)``
+
+
   * Enumeración de red:
   	*  ``portscan [destinos] [puertos] [método de descubrimiento] | net <comandos>  (comandos para encontrar objetivos en el dominio)``
+
+
   * Movimiento lateral:
   	*  ``jump psexec  (Ejecutar el servicio EXE en el host remoto) | jump psexec_psh  (Ejecute una línea única de PowerShell en un host remoto a través de un servicio) | jump winrm (Ejecute un script de PowerShell a través de WinRM en un host remoto) | remote-exec <cualquiera de los anteriores> (Ejecute un solo comando usando los métodos anteriores en el host remoto)``
 
