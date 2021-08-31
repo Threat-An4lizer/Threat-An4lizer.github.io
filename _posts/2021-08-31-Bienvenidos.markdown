@@ -1,4 +1,3 @@
-  GNU nano 5.4                                                                                                                                                                                                             2021-08-31-Bienvenidos                                                                                                                                                                                                                      
 ---
 layout: post
 title: "Bienvenidos a la web del analista!"
