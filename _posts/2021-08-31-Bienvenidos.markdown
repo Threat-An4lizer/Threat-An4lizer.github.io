@@ -36,7 +36,8 @@ Un SOC se divide por niveles en función del grado de especialización de los an
 3. Nivel 3: expertos y “hunters” (L3): Son consultores técnicos muy especializados en las diferentes materias de seguridad encargados de realizar las auditorías técnicas, proponer los planes de acción para la mejora y realizar algunos servicios especialmente complejos, como el análisis forense.
 
 ***
-Con este breve análisis de como funciona un SOC, es el momento de comenzar a analizar y comprender las nuevas amenazas que surgen cada día
+Tras esta breve presentación es el momento de comenzar a analizar y comprender las nuevas amenazas que surgen cada día.
+Os espero en los próximos blogs.
 
 ###### ¡A CAZAR!
 
