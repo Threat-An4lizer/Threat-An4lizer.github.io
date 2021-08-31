@@ -10,6 +10,7 @@ categories: BlueTeam
 
 **Cobalt Strike** es una herramienta elegida por las APT's para llevar a cabo la segunda fase de sus ataques, ya que ofrece capacidades mejoradas de post-explotación, a lo que se añade su facilidad de uso y extensibilidad. Por lo tanto, los defensores deben saber cómo detectar Cobalt Strike en varias etapas de su ejecución. El propósito principal de esta publicación es exponer las técnicas más comunes que vemos en las intrusiones que rastreamos y proporcionamos detecciones. Dicho esto, no se discutirán todas las características de Cobalt Strike.
 
+
 ## Funciones utilizadas principalmente:
 
   * Cargar y descargar cargas útiles y archivos: 
@@ -29,7 +30,7 @@ categories: BlueTeam
   * Movimiento lateral:
   	*  ``jump psexec  (Ejecutar el servicio EXE en el host remoto) | jump psexec_psh  (Ejecute una línea única de PowerShell en un host remoto a través de un servicio) | jump winrm (Ejecute un script de PowerShell a través de WinRM en un host remoto) | remote-exec <cualquiera de los anteriores> (Ejecute un solo comando usando los métodos anteriores en el host remoto)``
 
-
+---
 ## Infraestructura de Cobalt Strike:
 	
 Los ataques serios cuando se llevan a cabo registran muchos dominios y configuran varios sistemas para que actúen como redirectores (puntos de pivote) de regreso a sus C2. Cobalt Strike tiene soporte completo para redirectores. Un **redirector** es un sistema que envía todo el tráfico a su C2, estos no necesitan ningún tipo de software especial. Un poco de iptables o socat para redireccionar el tráfico y listo.
@@ -39,34 +40,42 @@ Cobalt Strike tiene la opción de crear perfiles maleables y permite a los actor
 ![]({{site.baseurl}}/images/redirectors.jpg)
 
 
+---
 ## Cobalt Strike en acción:
 
-	 - La gran mayoría de las herramientas posteriores a la explotación de Cobalt Strike se implementan como archivos DLL de Windows. Esto significaría que cada vez que un actor de amenazas ejecuta estas herramientas integradas, se genera un proceso temporal y usa <rundll32.exe> para inyectar código malicioso en él y comunicar los resultados a la baliza usando canalizaciones con nombre.
-	 - La herramienta permite cambiar el nombre de los operadores de las tuberias a cualquiera que elijan configurando el perfil C2 maleable. Aunque esto no es algo que se vea de normal por el atacante promedio. Tuberías predeterminadas:
-			. \postex_*
-			. \postex_ssh_*
-			. \status_*
-			. \msagent_*
-			. \MSSE-*
-			. \*-server
-	 - Acciones comunes por los atacantes:
-	 	1º Usar PowerShell para cargar e inyectar shellcode directamente en la memoria: 
-	 		. %PC% /b /c start /b /min powershell -nop -w -hidden -encodedcommand [TEXTO EN BASE64]
-	 	2º Descargar en disco y ejecutar manualmente en el objetivo:
-	 		. Tener en cuenta los ID de Sysmon (11 - Creación de archivos, 7 - Imagen cargada, 3 - Conexión de red y 1 - Creación de procesos)
-	 		. Tener en cuenta los registros de seguridad (4663 - Creación de archvos, 5156 - Conexión de red y 4688 - Creación de procesos)
- 		3º Ejecutar la baliza en la memoria a través de la infección inicial de malware
+La gran mayoría de las herramientas posteriores a la explotación de Cobalt Strike se implementan como archivos DLL de Windows. Esto significaría que cada vez que un actor de amenazas ejecuta estas herramientas integradas, se genera un proceso temporal que usa <rundll32.exe> para inyectar código malicioso en él y comunicar los resultados a la baliza usando canalizaciones con nombre. La herramienta permite cambiar el nombre de los operadores de las tuberias a cualquiera que elijan configurando el perfil C2 maleable. Aunque esto no es algo que se vea de normal por el atacante promedio. 
 
- Evasión de defensa:
+* Las principales tuberías predeterminadas son las siguientes:
+	* \postex_(*)
+	* \postex_ssh_(*)
+	* \status_(*)
+	* \msagent_(*)
+	* \MSSE-(*)
+	* \(*)-server
+
+* Acciones comunes por los atacantes:
+
+	1. Usar PowerShell para cargar e inyectar shellcode directamente en la memoria: 
+		* ``%PC% /b /c start /b /min powershell -nop -w -hidden -encodedcommand [TEXTO EN BASE64]``
+
+	2. Descargar en disco y ejecutar manualmente en el objetivo:
+		* Tener en cuenta los **ID de Sysmon** (11 - Creación de archivos, 7 - Imagen cargada, 3 - Conexión de red y 1 - Creación de procesos)
+		* Tener en cuenta los **registros de seguridad** (4663 - Creación de archvos, 5156 - Conexión de red y 4688 - Creación de procesos)
+
+	3. Ejecutar la baliza en la memoria a través de la infección inicial de malware
+
+ ---
+ ## Evasión de la defensa:
  	
 
 
 
+---
+## RECOMENDACIONES BLUE TEAM:
 
-RECOMENDACIONES BLUE TEAM:
-	- Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
-	- Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
-		. URL: https://labs.f-secure.com/blog/detecting-cobalt-strike-default-modules-via-named-pipe-analysis/
+* Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
+* Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
+	* URL: https://labs.f-secure.com/blog/detecting-cobalt-strike-default-modules-via-named-pipe-analysis/
 
 #### Referencias:  
 * https://thedfirreport.com/2021/08/29/cobalt-strike-a-defenders-guide/
