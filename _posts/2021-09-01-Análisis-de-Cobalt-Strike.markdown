@@ -10,39 +10,33 @@ categories: BlueTeam
 
 **Cobalt Strike** es una herramienta elegida por las APT's para llevar a cabo la segunda fase de sus ataques, ya que ofrece capacidades mejoradas de post-explotación, a lo que se añade su facilidad de uso y extensibilidad. Por lo tanto, los defensores deben saber cómo detectar Cobalt Strike en varias etapas de su ejecución. El propósito principal de esta publicación es exponer las técnicas más comunes que vemos en las intrusiones que rastreamos y proporcionamos detecciones. Dicho esto, no se discutirán todas las características de Cobalt Strike.
 
+---
 
 ## Funciones utilizadas principalmente:
 
-  * Cargar y descargar cargas útiles y archivos: 
-  	* ``Download [archivo] | Upload [archivo]``
+* Cargar y descargar cargas útiles y archivos: 
+	* ``Download [archivo] | Upload [archivo]``
 
+* Ejecución de comandos:
+	* ``shell [comando] | run [comando] | powershell [comando]``
 
-  * Ejecución de comandos:
-  	* ``shell [comando] | run [comando] | powershell [comando]``
+* Inyección de proceso: 
+	* ``inject <pid> | dllinject <pid> (para inyección de dll reflectante) | dllload <pid> ( para cargar una DLL en el disco en la memoria) | spawnto <arch> <full-exe-path> ( para vaciar el proceso).``
 
+* Proxy de SOCKS:
+	*  ``socks <número de puerto>``
 
-  * Inyección de proceso: 
-  	* ``inject <pid> | dllinject <pid> (para inyección de dll reflectante) | dllload <pid> ( para cargar una DLL en el disco en la memoria) | spawnto <arch> <full-exe-path> ( para vaciar el proceso).``
+* Escalada de privilegios:
+	*  ``getsystem  (suplantación de la cuenta del SISTEMA utilizando canalizaciones con nombre) | elevate svc-exe [listener]  (crea un servicio que ejecuta una carga útil como SISTEMA)``
 
+* Hashes y credenciales:
+	*  ``hashdump | logonpasswords (usando Mimikatz) | chromedump  (Recuperar contraseñas de Google Chrome del usuario actual)``
 
-  * Proxy de SOCKS:
-  	*  ``socks <número de puerto>``
+* Enumeración de red:
+	*  ``portscan [destinos] [puertos] [método de descubrimiento] | net <comandos>  (comandos para encontrar objetivos en el dominio)``
 
-
-  * Escalada de privilegios:
-  	*  ``getsystem  (suplantación de la cuenta del SISTEMA utilizando canalizaciones con nombre) | elevate svc-exe [listener]  (crea un servicio que ejecuta una carga útil como SISTEMA)``
-
-
-  * Hashes y credenciales:
-  	*  ``hashdump | logonpasswords (usando Mimikatz) | chromedump  (Recuperar contraseñas de Google Chrome del usuario actual)``
-
-
-  * Enumeración de red:
-  	*  ``portscan [destinos] [puertos] [método de descubrimiento] | net <comandos>  (comandos para encontrar objetivos en el dominio)``
-
-
-  * Movimiento lateral:
-  	*  ``jump psexec  (Ejecutar el servicio EXE en el host remoto) | jump psexec_psh  (Ejecute una línea única de PowerShell en un host remoto a través de un servicio) | jump winrm (Ejecute un script de PowerShell a través de WinRM en un host remoto) | remote-exec <cualquiera de los anteriores> (Ejecute un solo comando usando los métodos anteriores en el host remoto)``
+* Movimiento lateral:
+	*  ``jump psexec  (Ejecutar el servicio EXE en el host remoto) | jump psexec_psh  (Ejecute una línea única de PowerShell en un host remoto a través de un servicio) | jump winrm (Ejecute un script de PowerShell a través de WinRM en un host remoto) | remote-exec <cualquiera de los anteriores> (Ejecute un solo comando usando los métodos anteriores en el host remoto)``
 
 ---
 ## Infraestructura de Cobalt Strike:
@@ -53,6 +47,9 @@ Cobalt Strike tiene la opción de crear perfiles maleables y permite a los actor
 
 ![]({{site.baseurl}}/images/redirectors.jpg)
 
+El componente **Beacon** es altamente versátil y admite comunicaciones asíncronas o interactivas. El módulo asíncrono es muy útil para un atacante para crear distorsiones temporales, estableciendo conexiones basados en valores temporales aleatorios, que permite evitar que se puedan realizar asociaciones de ataques con patrones de comunicaciones concretas. En este sentido el componente de Beacon llamará al C2 evaluará si hay tareas, las descargará y las podrán en ejecución cuando sea necesario.
+
+Los indicadores de red de Beacon son flexibles, empleado el lenguaje maleable C2 propio de Cobalt Strike. Esto le permite ocultar la actividad de Beacon para que se disfrace como otro malware o se haga pasar como tráfico legítimo.
 
 ---
 ## Cobalt Strike en acción:
