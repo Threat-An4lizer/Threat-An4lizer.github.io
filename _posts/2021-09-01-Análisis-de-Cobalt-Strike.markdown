@@ -73,7 +73,8 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
 		* Tener en cuenta los **ID de Sysmon** (11 - Creación de archivos, 7 - Imagen cargada, 3 - Conexión de red y 1 - Creación de procesos)
 		* Tener en cuenta los **registros de seguridad** (4663 - Creación de archvos, 5156 - Conexión de red y 4688 - Creación de procesos)
 
-	3. Ejecutar la baliza en la memoria a través de la infección inicial de malware
+	3. Ejecutar la baliza en la memoria a través de la infección inicial de malware:
+		![]({{site.baseurl}}/images/beacon_memory.png)
 
  ---
  ## Evasión de la defensa:
