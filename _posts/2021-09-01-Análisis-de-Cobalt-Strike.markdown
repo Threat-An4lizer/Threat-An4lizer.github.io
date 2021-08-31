@@ -43,7 +43,7 @@ categories: BlueTeam
 	
 Los ataques serios cuando se llevan a cabo registran muchos dominios y configuran varios sistemas para que actúen como redirectores (puntos de pivote) de regreso a sus C2. Cobalt Strike tiene soporte completo para redirectores. Un **redirector** es un sistema que envía todo el tráfico a su C2, estos no necesitan ningún tipo de software especial. Un poco de iptables o socat para redireccionar el tráfico y listo.
 
-Cobalt Strike tiene la opción de crear perfiles maleables y permite a los actores de las amenazas personalizar casi todos los aspectos del marco C2. Esto dificulta en gran medida la vida y el trabajo de los defensores, ya que la huella puede cambiar con cada modificación del perfil. Los cibercriminales tienen la capacidad de cambiar cualquier cosa, desde la comunicación de la red (como el agente de usuario, los encabezados, los URI predeterminados) hasta las funciones individuales posteriores a la explotación, como la inyección de procesos y las capacidades de ofuscación de la carga útil.
+Cobalt Strike tiene la opción de **crear perfiles maleables** y permite a los actores de las amenazas personalizar casi todos los aspectos del marco C2. Esto dificulta en gran medida la vida y el trabajo de los defensores, ya que la huella puede cambiar con cada modificación del perfil. Los cibercriminales tienen la **capacidad de cambiar cualquier ccaracterística**, desde la comunicación de la red (como el agente de usuario, los encabezados, los URI predeterminados) hasta las funciones individuales posteriores a la explotación, como la inyección de procesos y las capacidades de ofuscación de la carga útil.
 
 ![]({{site.baseurl}}/images/redirectors.jpg)
 
