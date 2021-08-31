@@ -43,7 +43,7 @@ categories: BlueTeam
 	
 Los ataques serios cuando se llevan a cabo registran muchos dominios y configuran varios sistemas para que actúen como redirectores (puntos de pivote) de regreso a sus C2. Cobalt Strike tiene soporte completo para redirectores. Un **redirector** es un sistema que envía todo el tráfico a su C2, estos no necesitan ningún tipo de software especial. Un poco de iptables o socat para redireccionar el tráfico y listo.
 
-Cobalt Strike tiene la opción de **crear perfiles maleables** y permite a los actores de las amenazas personalizar casi todos los aspectos del marco C2. Esto dificulta en gran medida la vida y el trabajo de los defensores, ya que la huella puede cambiar con cada modificación del perfil. Los cibercriminales tienen la **capacidad de cambiar cualquier ccaracterística**, desde la comunicación de la red (como el agente de usuario, los encabezados, los URI predeterminados) hasta las funciones individuales posteriores a la explotación, como la inyección de procesos y las capacidades de ofuscación de la carga útil.
+Cobalt Strike tiene la opción de **crear perfiles maleables** y permite a los actores de las amenazas personalizar casi todos los aspectos del marco C2. Esto dificulta en gran medida la vida y el trabajo de los defensores, ya que la huella puede cambiar con cada modificación del perfil. Los cibercriminales tienen la **capacidad de cambiar cualquier característica**, desde la comunicación de la red (como el agente de usuario, los encabezados, los URI predeterminados) hasta las funciones individuales posteriores a la explotación, como la inyección de procesos y las capacidades de ofuscación de la carga útil.
 
 ![]({{site.baseurl}}/images/redirectors.jpg)
 
@@ -64,20 +64,23 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
 	* \MSSE-(*)
 	* \(*)-server
 
+
 * Acciones comunes por los atacantes:
 
 	1. Usar PowerShell para cargar e inyectar shellcode directamente en la memoria: 
 		* ``%PC% /b /c start /b /min powershell -nop -w -hidden -encodedcommand [TEXTO EN BASE64]``
 
+
 	2. Descargar en disco y ejecutar manualmente en el objetivo:
 		* Tener en cuenta los **ID de Sysmon** (11 - Creación de archivos, 7 - Imagen cargada, 3 - Conexión de red y 1 - Creación de procesos)
 		* Tener en cuenta los **registros de seguridad** (4663 - Creación de archvos, 5156 - Conexión de red y 4688 - Creación de procesos)
+
 
 	3. Ejecutar la baliza en la memoria a través de la infección inicial de malware:
 		![]({{site.baseurl}}/images/beacon_memory.png)
 
  ---
- ## Evasión de la defensa:
+## Evasión de la defensa:
  	
 
 
@@ -88,7 +91,9 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
 * Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
 * Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
 	* URL: https://labs.f-secure.com/blog/detecting-cobalt-strike-default-modules-via-named-pipe-analysis/
-
+---
 #### Referencias:  
 * https://thedfirreport.com/2021/08/29/cobalt-strike-a-defenders-guide/
 * https://blog.cobaltstrike.com/2014/01/14/cloud-based-redirectors-for-distributed-hacking/
+* https://conpilar.es/los-desafios-de-la-toma-de-huellas-dactilares-del-servidor-cobalt-strike/
+* https://www.sidertia.com/cobalt-strike-el-componente-perfecto-para-los-ciberdelincuentes-ii/
