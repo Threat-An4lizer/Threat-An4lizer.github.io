@@ -1,6 +1,6 @@
 title: BlueTeam Threat Analyzer
 description: Web dedicada al análisis de amenazas informáticas.
-baseurl: "/2021/08/31/Bienvenidos" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://threat-an4lizer.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Author
