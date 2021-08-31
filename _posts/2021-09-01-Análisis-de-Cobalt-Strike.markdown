@@ -91,6 +91,7 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
 * Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
 * Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
 	* URL: https://labs.f-secure.com/blog/detecting-cobalt-strike-default-modules-via-named-pipe-analysis/
+
 ---
 #### Referencias:  
 * https://thedfirreport.com/2021/08/29/cobalt-strike-a-defenders-guide/
