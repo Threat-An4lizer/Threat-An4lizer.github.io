@@ -162,10 +162,14 @@ Ejemplo petición POST:
 * Detección de los intentos de relación de confianza, para ello monitorear los principales binarios que permiten llevar a cabo este tipo de acciones. Para ello, hacer uso de herramientas de Red Team que permitan detectarlas.
 * Investigar si los procesos de Sysmon 11, 1, 25 y 12/13 van continuados.
 * Investigar si los procesos de Sysmon 1, 8, 10 y 17 van continuados.
+* Monitorización de las peticiones GET y POST, desde donde se hace y hacia donde va. Comprobando reputación de la IP, dominio, etc.
 
 ---
 #### Referencias:  
+URL ORIGINAL DE DONDE SALE EL BLOQUE PRINCIPAL DE INFORMACIÓN:
 * https://thedfirreport.com/2021/08/29/cobalt-strike-a-defenders-guide/
+
+EXTRAS AÑADIDOS:
 * https://blog.cobaltstrike.com/2014/01/14/cloud-based-redirectors-for-distributed-hacking/
 * https://conpilar.es/los-desafios-de-la-toma-de-huellas-dactilares-del-servidor-cobalt-strike/
 * https://www.sidertia.com/cobalt-strike-el-componente-perfecto-para-los-ciberdelincuentes-ii/
