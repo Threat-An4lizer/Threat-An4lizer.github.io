@@ -153,6 +153,10 @@ Ejemplo petición POST:
 ![]({{site.baseurl}}/images/POST.png)
 
 ---
+## Movimiento lateral con CB:
+
+
+---
 ## RECOMENDACIONES PARA EL BLUE TEAM:
 
 * Configurar Sysmon (Vital importancia)
