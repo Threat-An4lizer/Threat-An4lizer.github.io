@@ -80,7 +80,7 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
 		![]({{site.baseurl}}/images/beacon_memory.png)
 
  ---
-## Evasión de la defensa:
+## Evasión de la defensa con CB:
  	
 El factor común de todos los ataques suele ser la inyección de código malicios en los procesos para tratar de no ser detectados y comenzar con la escalada de privilegios. En los dominios de Windows, suele ser típico inyectarlo en *lsass.exe* para extraer las credenciales de la memoria.
 
@@ -100,13 +100,27 @@ Tal y como se puede observar en la imagen, selecciona el PID y la arquitectura y
 22/3- Consulta de red / DNS (Este hilo lleva a cabo peticiones DNS, tratando de conectar con el C2)
 
 ``
+---
+## Escaneo y descubrimiento con CB:
+
+En muchos de los casos reales en los que se detecta a Cobalt Strike vemos a los actores ejecutando comandos de reconocimiento con la ayuda del comando "shell". Los comandos se basan en utilidades nativas de Windows como nltest.exe, whoami.exe y net.exe para ayudar con el escaneo y descubrimiento de vulnerabilidades de los equipos, así como redes internas.
+
+> Los comandos se basan en utilidades nativas de Windows como nltest.exe, whoami.exe y net.exe para ayudar con el escaneo y descubrimiento...
+
+En los entornos Windows, **las relaciones de confianza** o *Domain Trust Discovery* juegan un papel fundamental a la hora de determinar quién puede acceder a qué recursos. Para determinar qué cuentas de usuario tienen acceso a qué sistemas, un adversario debe comprender las cuentas de usuario que existen dentro de un dominio determinado y las relaciones de confianza entre ese dominio y otros.
+
+Nltest es una herramienta de línea de comandos nativa de Microsoft que los administradores suelen utilizar para enumerar controladores de dominio (DC) y determinar el estado de confianza entre dominios, por nombrar algunas características importantes.
+
+> Las herramientas más utilizadas para explotar las relaciones de confianza son AdFind y BloodHound.
 
 ---
-## RECOMENDACIONES BLUE TEAM:
+## RECOMENDACIONES PARA EL BLUE TEAM:
 
+* Configurar Sysmon (Vital importancia)
 * Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
 * Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
-	* URL: https://labs.f-secure.com/blog/detecting-cobalt-strike-default-modules-via-named-pipe-analysis/
+* Investigar si los procesos de Sysmon 10, 8 y 22/3 van continuados.
+* Detección de los intentos de relación de confianza, para ello monitorear los principales binarios que permiten llevar a cabo este tipo de acciones. Para ello, hacer uso de herramientas de Red Team que permitan detectarlas.
 
 ---
 #### Referencias:  
@@ -115,3 +129,4 @@ Tal y como se puede observar en la imagen, selecciona el PID y la arquitectura y
 * https://conpilar.es/los-desafios-de-la-toma-de-huellas-dactilares-del-servidor-cobalt-strike/
 * https://www.sidertia.com/cobalt-strike-el-componente-perfecto-para-los-ciberdelincuentes-ii/
 * https://hideandsec.sh/books/red-teaming-tactics/page/cobalt-strike-process-injection
+* https://redcanary.com/threat-detection-report/techniques/domain-trust-discovery/
