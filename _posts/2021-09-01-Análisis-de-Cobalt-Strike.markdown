@@ -82,8 +82,15 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
  ---
 ## Evasión de la defensa:
  	
+El factor común de todos los ataques suele ser la inyección de código malicios en los procesos para tratar de no ser detectados y comenzar con la escalada de privilegios. En los dominios de Windows, suele ser típico inyectarlo en *lsass.exe* para extraer las credenciales de la memoria.
 
+Cuando los atacantes se inyecta en un proceso remoto, están generando una nueva sesión en el contexto del usuario al que pertenece el proceso inyectado. Cobalt strike dispone de muchos módulos que facilitan la inyección de código malicioso en los procesos. Como por ejemplo:
 
+* *inject/shinject*: Permite inyectar código en cualquier proceso remoto, algunos módulos de post-explotación incorporados también pueden inyectarse en un proceso remoto particular a través de la herramienta. Cobalt Strike hizo esto porque inyectar shellcode en una nueva sesión sería más seguro que migrar la sesión directamente a otro C2.
+*  *shspawn*: Su función es iniciar un proceso e inyectarle shellcode. Los parámetros solo necesitan seleccionar la arquitectura del programa. Este proceso es más estable ya que no se corre el riesgo de que el proceso finalice. 
+*  *process-inject*: Permite la configuración de un bloque de inyección de comandos en un perfil maleable del C2. 
+
+![]({{site.baseurl}}/images/shinject.png)
 
 ---
 ## RECOMENDACIONES BLUE TEAM:
@@ -98,3 +105,4 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
 * https://blog.cobaltstrike.com/2014/01/14/cloud-based-redirectors-for-distributed-hacking/
 * https://conpilar.es/los-desafios-de-la-toma-de-huellas-dactilares-del-servidor-cobalt-strike/
 * https://www.sidertia.com/cobalt-strike-el-componente-perfecto-para-los-ciberdelincuentes-ii/
+* https://hideandsec.sh/books/red-teaming-tactics/page/cobalt-strike-process-injection
