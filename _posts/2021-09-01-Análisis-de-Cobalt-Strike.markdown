@@ -94,9 +94,9 @@ Cuando los atacantes se inyecta en un proceso remoto, están generando una nueva
 
 Tal y como se puede observar en la imagen, selecciona el PID y la arquitectura y crea un subproceso del proceso al cual se ha inyectado, pasando totalmente desapercibido. Para la detección de la inyección de procesos podemos hacer uso de Sysmon, buscando los siguientes IDs en este orden consecutivo:
 
-``10 - Proceso creado (Se lleva a cabo la inyección en un proceso)
-8 - CreateRemoteThread detectado (Se crea un hilo del proceso)
-22/3- Consulta de red / DNS (Este hilo lleva a cabo peticiones DNS, tratando de conectar con el C2)``
+* 10 - Proceso creado (Se lleva a cabo la inyección en un proceso)
+* 8 - CreateRemoteThread detectado (Se crea un hilo del proceso)
+* 22/3- Consulta de red / DNS (Este hilo lleva a cabo peticiones DNS, tratando de conectar con el C2)
 
 ---
 ## Escaneo y descubrimiento con CB:
@@ -112,6 +112,29 @@ Nltest es una herramienta de línea de comandos nativa de Microsoft que los admi
 > Las herramientas más utilizadas para explotar las relaciones de confianza son AdFind y BloodHound.
 
 ---
+## Escalada de privilegios:
+
+La técnica más común que usan los actores de amenazas para obtener privilegios de nivel de SISTEMA es el  método GetSystem a través de la suplantación de canalización con nombre. Tal y como se puede observar en la imagen siguiente, de un ejemplo real en un sistema que fue comprometido con TrickBot:
+![]({{site.baseurl}}/images/getsystem.png)
+
+Existen otros métodos que permiten la escalada de privilegios, como el comando *elevate*. Este comando utiliza dos opciones para escalar privilegios:
+1. El primero es *svc-exe*. Intenta colocar un ejecutable en "C:\Windows" y crear un servicio para ejecutar la carga útil como SYSTEM.
+2. El segundo es el método *uac-token-duplication*, que intenta generar un nuevo proceso con privilegios de SYSTEM en el contexto de un usuario sin privilegios con un token robado de un proceso con privilegios.
+
+Para la detección de estos procesos, vuelve a ser necesario Sysmon. Hay que monitorizar los procesos:
+* 11 - Creación de un archivo
+* 1 - Crea proceso
+* 25 - Manipulación de un proceso
+* 12/13 - Se escribe el valor de un registro
+
+En relación a los eventos de Windows:
+* Instalación de un servicio: 4697 (seguridad) y 7045 (sistema)
+* Creación de procesos: 4688
+
+
+
+
+---
 ## RECOMENDACIONES PARA EL BLUE TEAM:
 
 * Configurar Sysmon (Vital importancia)
@@ -119,6 +142,7 @@ Nltest es una herramienta de línea de comandos nativa de Microsoft que los admi
 * Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
 * Investigar si los procesos de Sysmon 10, 8 y 22/3 van continuados.
 * Detección de los intentos de relación de confianza, para ello monitorear los principales binarios que permiten llevar a cabo este tipo de acciones. Para ello, hacer uso de herramientas de Red Team que permitan detectarlas.
+* Investigar si los procesos de Sysmon 11, 1, 25 y 12/13 van continuados.
 
 ---
 #### Referencias:  
