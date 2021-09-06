@@ -94,12 +94,12 @@ Cuando los atacantes se inyecta en un proceso remoto, están generando una nueva
 
 Tal y como se puede observar en la imagen, selecciona el PID y la arquitectura y crea un subproceso del proceso al cual se ha inyectado, pasando totalmente desapercibido. Para la detección de la inyección de procesos podemos hacer uso de Sysmon, buscando los siguientes IDs en este orden consecutivo:
 
-``
+````
 10 - Proceso creado (Se lleva a cabo la inyección en un proceso)
 8 - CreateRemoteThread detectado (Se crea un hilo del proceso)
 22/3- Consulta de red / DNS (Este hilo lleva a cabo peticiones DNS, tratando de conectar con el C2)
+````
 
-``
 ---
 ## Escaneo y descubrimiento con CB:
 
