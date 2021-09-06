@@ -170,10 +170,10 @@ Ejemplo petición POST:
 
 ---
 #### Referencias:  
-URL ORIGINAL DE DONDE SALE EL BLOQUE PRINCIPAL DE INFORMACIÓN:
+**URL ORIGINAL DE DONDE SALE EL BLOQUE PRINCIPAL DE INFORMACIÓN:**
 * https://thedfirreport.com/2021/08/29/cobalt-strike-a-defenders-guide/
 
-EXTRAS AÑADIDOS:
+**EXTRAS AÑADIDOS:**
 * https://blog.cobaltstrike.com/2014/01/14/cloud-based-redirectors-for-distributed-hacking/
 * https://conpilar.es/los-desafios-de-la-toma-de-huellas-dactilares-del-servidor-cobalt-strike/
 * https://www.sidertia.com/cobalt-strike-el-componente-perfecto-para-los-ciberdelincuentes-ii/
