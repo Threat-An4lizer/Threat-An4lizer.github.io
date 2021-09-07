@@ -197,9 +197,7 @@ En resumen:
 4673: Uso de privilegios confidenciales 
 4688: Creación de procesos 
 5140: Uso compartido de archivos 
-4674: 
-
-Eventos de creación de servicios de uso de privilegios confidenciales 
+4674: Eventos de creación de servicios de uso de privilegios confidenciales 
 4697: Se instaló un servicio en el sistema. (security.evtx) 
 7045: Se instaló un servicio en el sistema. (system.evtx) 
 7034: un servicio terminó inesperadamente``
@@ -215,7 +213,8 @@ Eventos de creación de servicios de uso de privilegios confidenciales
 * Investigar si los procesos de Sysmon 11, 1, 25 y 12/13 van continuados.
 * Investigar si los procesos de Sysmon 1, 8, 10 y 17 van continuados.
 * Monitorización de las peticiones GET y POST, desde donde se hace y hacia donde va. Comprobando reputación de la IP, dominio, etc.
-* Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 4697, 4674 y 5140.
+* Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 4697, 4674 y 5140 en conjunto.
+* Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 5140, 4674, 4697, 7045 y 7035 en conjunto.
 
 ---
 #### Referencias:  
