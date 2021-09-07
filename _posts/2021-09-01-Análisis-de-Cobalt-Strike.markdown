@@ -158,7 +158,6 @@ Ejemplo petición POST:
 Una vez los ciberdelicuentes han conseguido acceso a un equipo y han recopilado información de su PC y del entorno gracias a la fase de descubrimiento mencionada anteriormente, comienza la fase de los movimientos laterales.  La gran mayoría de informes que analizan los ataques perpetrados indican que las técnicas más usadas con CB por los atacantes son:
 
 
-- - - -
 ##### Ejecución y transferencia ejecutable SMB / WMI:
 Este método es el más utilizado por los atacantes. De normal suele estar cargando su ejecutable desde el host deseado con el comando *upload* de Cobalt Strike y lo ejecutan usando el comando *remote-exec*. Tambien suelen usar *psexec*, *winrm* o *wmi* para ejecutar un comando. 
 
@@ -170,9 +169,8 @@ Los IDs que deberíamos buscar para detectarlo son:
 * 4697 - Security System Extension
 * 4674 - Sensitive Privilige Use
 * 5140 - File Share
+
 - - - -
-
-
 ##### Pass the hash
 Cobalt Strike puede usar Mimikatz para generar y hacerse pasar por un token que luego se puede usar para realizar tareas en el contexto de ese recurso de usuario elegido. La baliza Cobalt Strike también puede usar este token para interactuar con los recursos de la red y ejecutar comandos remotos. 
 
@@ -182,7 +180,7 @@ Detección:
 
 
 - - - -
-##### SMB, ejecución de servicios remotos 
+##### Ejecución de servicios remotos 
 En muchos de los ataques que hemos analizado, los atacantes ejecutan el comando *jump psexec* para crear un servicio remoto (Domain Controler) y ejecutar el .exe malicioso en el servidor. Cobalt strike es capaz de especificar el ejecutable para crear el servicio remoto.  Antes de que pueda hacer eso, tendrá que transferir el ejecutable del servicio al host de destino. El nombre del ejecutable del servicio se crea con siete caracteres alfanuméricos aleatorios.
 
 Para identificarlo, podemos observar los eventos de Windows que se generan:
