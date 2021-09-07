@@ -155,6 +155,28 @@ Ejemplo petición POST:
 ---
 ## Movimiento lateral con CB:
 
+Una vez los ciberdelicuentes han conseguido acceso a un equipo y han recopilado información de su PC y del entorno gracias a la fase de descubrimiento mencionada anteriormente, comienza la fase de los movimientos laterales.  La gran mayoría de informes que analizan los ataques perpetrados indican que las técnicas más usadas con CB por los atacantes son:
+
+##### Ejecución y transferencia ejecutable SMB / WMI:
+Este método es el más utilizado por los atacantes. De normal suele estar cargando su ejecutable desde el host deseado con el comando *upload* de Cobalt Strike y lo ejecutan usando el comando *remote-exec*. Tambien suelen usar *psexec*, *winrm* o *wmi* para ejecutar un comando. 
+
+Los IDs que deberíamos buscar para detectarlo son:
+* 4264 - Logon
+* 4672 - Special Logon
+* 4673 - Sensitive Privilege Use
+* 4688 - Process Creation
+* 4697 - Security System Extension
+* 4674 - Sensitive Privilige Use
+* 5140 - File Share
+
+##### Pass the hash
+Cobalt Strike puede usar Mimikatz para generar y hacerse pasar por un token que luego se puede usar para realizar tareas en el contexto de ese recurso de usuario elegido. La baliza Cobalt Strike también puede usar este token para interactuar con los recursos de la red y ejecutar comandos remotos. 
+
+Detección:
+![]({{site.baseurl}}/images/PTH.jpg)
+
+##### RDP
+##### Ejecución de servicios remotos
 
 ---
 ## RECOMENDACIONES PARA EL BLUE TEAM:
@@ -167,6 +189,7 @@ Ejemplo petición POST:
 * Investigar si los procesos de Sysmon 11, 1, 25 y 12/13 van continuados.
 * Investigar si los procesos de Sysmon 1, 8, 10 y 17 van continuados.
 * Monitorización de las peticiones GET y POST, desde donde se hace y hacia donde va. Comprobando reputación de la IP, dominio, etc.
+* Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 4697, 4674 y 5140.
 
 ---
 #### Referencias:  
