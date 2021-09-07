@@ -157,6 +157,8 @@ Ejemplo petición POST:
 
 Una vez los ciberdelicuentes han conseguido acceso a un equipo y han recopilado información de su PC y del entorno gracias a la fase de descubrimiento mencionada anteriormente, comienza la fase de los movimientos laterales.  La gran mayoría de informes que analizan los ataques perpetrados indican que las técnicas más usadas con CB por los atacantes son:
 
+
+
 ##### Ejecución y transferencia ejecutable SMB / WMI:
 Este método es el más utilizado por los atacantes. De normal suele estar cargando su ejecutable desde el host deseado con el comando *upload* de Cobalt Strike y lo ejecutan usando el comando *remote-exec*. Tambien suelen usar *psexec*, *winrm* o *wmi* para ejecutar un comando. 
 
@@ -169,14 +171,20 @@ Los IDs que deberíamos buscar para detectarlo son:
 * 4674 - Sensitive Privilige Use
 * 5140 - File Share
 
+
+
 ##### Pass the hash
 Cobalt Strike puede usar Mimikatz para generar y hacerse pasar por un token que luego se puede usar para realizar tareas en el contexto de ese recurso de usuario elegido. La baliza Cobalt Strike también puede usar este token para interactuar con los recursos de la red y ejecutar comandos remotos. 
 
 Detección:
---
+
 ![]({{site.baseurl}}/images/PTH.jpg)
 
+
+
+
 ##### RDP
+
 ##### Ejecución de servicios remotos
 
 ---
