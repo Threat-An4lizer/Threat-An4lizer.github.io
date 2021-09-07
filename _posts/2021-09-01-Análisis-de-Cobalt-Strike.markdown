@@ -173,6 +173,7 @@ Los IDs que deberíamos buscar para detectarlo son:
 Cobalt Strike puede usar Mimikatz para generar y hacerse pasar por un token que luego se puede usar para realizar tareas en el contexto de ese recurso de usuario elegido. La baliza Cobalt Strike también puede usar este token para interactuar con los recursos de la red y ejecutar comandos remotos. 
 
 Detección:
+
 ![]({{site.baseurl}}/images/PTH.jpg)
 
 ##### RDP
