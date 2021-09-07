@@ -189,32 +189,32 @@ Para identificarlo, podemos observar los eventos de Windows que se generan:
 
 ![]({{site.baseurl}}/images/ID.png)
 
-En resumen:
+En resumen, para su detección hay que monitorizar los procesos de Windows que van continuados con el siguiente ID:
 
 
-``4624: Inicio de sesión 
-4672: Inicio de sesión especial 
-4673: Uso de privilegios confidenciales 
-4688: Creación de procesos 
-5140: Uso compartido de archivos 
-4674: Eventos de creación de servicios de uso de privilegios confidenciales 
-4697: Se instaló un servicio en el sistema. (security.evtx) 
-7045: Se instaló un servicio en el sistema. (system.evtx) 
-7034: un servicio terminó inesperadamente``
+* 4624: Inicio de sesión 
+* 4672: Inicio de sesión especial 
+* 4673: Uso de privilegios confidenciales 
+* 4688: Creación de procesos 
+* 5140: Uso compartido de archivos 
+* 4674: Eventos de creación de servicios de uso de privilegios confidenciales 
+* 4697: Se instaló un servicio en el sistema. (security.evtx) 
+* 7045: Se instaló un servicio en el sistema. (system.evtx) 
+* 7034: un servicio terminó inesperadamente
 
 ---
 ## RECOMENDACIONES PARA EL BLUE TEAM:
 
-* Configurar Sysmon (Vital importancia)
-* Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
-* Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
-* Investigar si los procesos de Sysmon 10, 8 y 22/3 van continuados.
-* Detección de los intentos de relación de confianza, para ello monitorear los principales binarios que permiten llevar a cabo este tipo de acciones. Para ello, hacer uso de herramientas de Red Team que permitan detectarlas.
-* Investigar si los procesos de Sysmon 11, 1, 25 y 12/13 van continuados.
-* Investigar si los procesos de Sysmon 1, 8, 10 y 17 van continuados.
-* Monitorización de las peticiones GET y POST, desde donde se hace y hacia donde va. Comprobando reputación de la IP, dominio, etc.
-* Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 4697, 4674 y 5140 en conjunto.
-* Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 5140, 4674, 4697, 7045 y 7035 en conjunto.
+> * Configurar Sysmon (Vital importancia)
+> * Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
+> * Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
+> * Investigar si los procesos de Sysmon 10, 8 y 22/3 van continuados.
+> * Detección de los intentos de relación de confianza, para ello monitorear los principales binarios que permiten llevar a cabo este tipo de acciones. Para ello, hacer uso de herramientas de Red Team que permitan detectarlas.
+> * Investigar si los procesos de Sysmon 11, 1, 25 y 12/13 van continuados.
+> * Investigar si los procesos de Sysmon 1, 8, 10 y 17 van continuados.
+> * Monitorización de las peticiones GET y POST, desde donde se hace y hacia donde va. Comprobando reputación de la IP, dominio, etc.
+> * Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 4697, 4674 y 5140 en conjunto.
+> * Investigar los procesos de Seguridad de Windows 4264, 4672, 4673, 4688, 5140, 4674, 4697, 7045 y 7035 en conjunto.
 
 ---
 #### Referencias:  
