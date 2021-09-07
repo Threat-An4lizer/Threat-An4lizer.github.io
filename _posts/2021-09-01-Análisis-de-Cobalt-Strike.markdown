@@ -209,7 +209,7 @@ En resumen, para su detección hay que monitorizar los procesos de Windows que v
 > > * Investigar si los procesos de Sysmon 11, 1, 25 y 12/13 van continuados.
 > > * Investigar si los procesos de Sysmon 1, 8, 10 y 17 van continuados.
 > 
-> Los defensores deben prestar mucha atención a los eventos de la línea de comandos que rundll32 está ejecutando sin ningún argumento.
+> Los analistas deben prestar especial atención a los eventos en los que rundll32 se está ejecutando sin ningún argumento.
 >
 > Detección de los intentos de relación de confianza, para ello monitorear los principales binarios que permiten llevar a cabo este tipo de acciones. Para ello, hacer uso de herramientas de Red Team que permitan detectarlas.
 > 
