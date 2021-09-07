@@ -201,7 +201,7 @@ En resumen, para su detección hay que monitorizar los procesos de Windows que v
 * 7034: un servicio terminó inesperadamente
 
 ---
-## RECOMENDACIONES PARA EL BLUE TEAM:
+## Recomendaciones para el Blue Team:
 
 > Sysmon:
 > > * Configurar los eventos 17 y 18 de Sysmon para registrar las canalizaciones con nombre. 
