@@ -45,7 +45,7 @@ Los ataques serios cuando se llevan a cabo registran muchos dominios y configura
 
 Cobalt Strike tiene la opción de **crear perfiles maleables** y permite a los actores de las amenazas personalizar casi todos los aspectos del marco C2. Esto dificulta en gran medida la vida y el trabajo de los defensores, ya que la huella puede cambiar con cada modificación del perfil. Los cibercriminales tienen la **capacidad de cambiar cualquier característica**, desde la comunicación de la red (como el agente de usuario, los encabezados, los URI predeterminados) hasta las funciones individuales posteriores a la explotación, como la inyección de procesos y las capacidades de ofuscación de la carga útil.
 
-![]({{site.baseurl}}/images/redirectors.jpg)
+![Estructura redirectores]({{site.baseurl}}/images/redirectors.jpg)
 
 El componente **Beacon** es altamente versátil y admite comunicaciones asíncronas o interactivas. El módulo asíncrono es muy útil para un atacante para crear distorsiones temporales, estableciendo conexiones basados en valores temporales aleatorios, que permite evitar que se puedan realizar asociaciones de ataques con patrones de comunicaciones concretas. En este sentido el componente de Beacon llamará al C2 evaluará si hay tareas, las descargará y las podrán en ejecución cuando sea necesario.
 
