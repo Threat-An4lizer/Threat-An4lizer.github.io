@@ -192,8 +192,7 @@ Para identificarlo, podemos observar los eventos de Windows que se generan:
 En resumen:
 
 
-``
-4624: Inicio de sesión 
+``4624: Inicio de sesión 
 4672: Inicio de sesión especial 
 4673: Uso de privilegios confidenciales 
 4688: Creación de procesos 
@@ -203,8 +202,7 @@ En resumen:
 Eventos de creación de servicios de uso de privilegios confidenciales 
 4697: Se instaló un servicio en el sistema. (security.evtx) 
 7045: Se instaló un servicio en el sistema. (system.evtx) 
-7034: un servicio terminó inesperadamente
-``
+7034: un servicio terminó inesperadamente``
 
 ---
 ## RECOMENDACIONES PARA EL BLUE TEAM:
