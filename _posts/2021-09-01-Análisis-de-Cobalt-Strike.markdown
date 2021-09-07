@@ -77,7 +77,7 @@ La gran mayoría de las herramientas posteriores a la explotación de Cobalt Str
 
 
 	3. Ejecutar la baliza en la memoria a través de la infección inicial de malware:
-		![]({{site.baseurl}}/images/beacon_memory.png)
+		![imagen con malware]({{site.baseurl}}/images/beacon_memory.png)
 
  ---
 ## Evasión de la defensa con CB:
@@ -90,7 +90,7 @@ Cuando los atacantes se inyecta en un proceso remoto, están generando una nueva
 *  *shspawn*: Su función es iniciar un proceso e inyectarle shellcode. Los parámetros solo necesitan seleccionar la arquitectura del programa. Este proceso es más estable ya que no se corre el riesgo de que el proceso finalice. 
 *  *process-inject*: Permite la configuración de un bloque de inyección de comandos en un perfil maleable del C2. 
 
-![]({{site.baseurl}}/images/shinject.png)
+![ejecucion comandos]({{site.baseurl}}/images/shinject.png)
 
 Tal y como se puede observar en la imagen, selecciona el PID y la arquitectura y crea un subproceso del proceso al cual se ha inyectado, pasando totalmente desapercibido. Para la detección de la inyección de procesos podemos hacer uso de Sysmon, buscando los siguientes IDs en este orden consecutivo:
 
@@ -115,7 +115,7 @@ Nltest es una herramienta de línea de comandos nativa de Microsoft que los admi
 ## Escalada de privilegios con comandos de CB:
 
 La técnica más común que usan los actores de amenazas para obtener privilegios de nivel de SISTEMA es el  método GetSystem a través de la suplantación de canalización con nombre. Tal y como se puede observar en la imagen siguiente, de un ejemplo real en un sistema que fue comprometido con TrickBot:
-![]({{site.baseurl}}/images/getsystem.png)
+![Getsystem]({{site.baseurl}}/images/getsystem.png)
 
 Existen otros métodos que permiten la escalada de privilegios, como el comando *elevate*. Este comando utiliza dos opciones para escalar privilegios:
 1. El primero es ***svc-exe***. Intenta colocar un ejecutable en "C:\Windows" y crear un servicio para ejecutar la carga útil como SYSTEM.
@@ -147,10 +147,10 @@ ID de Sysmon 1,8,10,17: (el ID de evento 8 no siempre estará presente según la
 Cobalt Strike está utilizando solicitudes GET y POST para comunicarse con el servidor C2. Los ciberdelincuentes pueden elegir entre la comunicación mediante HTTP, HTTPS y DNS. Cuando se trata de C2, normalmente vemos balizas HTTP y HTTPS. De forma predeterminada, Cobalt Strike utilizará solicitudes GET para recuperar información y solicitudes POST para enviar información al servidor. Aunque como explicamos anteriormente, todos estos perfiles son totalmente modificables, aunque no suele verse con mucha frecuencia.
 
 Ejemplo petición GET:
-![]({{site.baseurl}}/images/GET.png)
+![GET]({{site.baseurl}}/images/GET.png)
 
 Ejemplo petición POST:
-![]({{site.baseurl}}/images/POST.png)
+![POST]({{site.baseurl}}/images/POST.png)
 
 ---
 ## Movimiento lateral con CB:
@@ -185,7 +185,7 @@ En muchos de los ataques que hemos analizado, los atacantes ejecutan el comando 
 
 Para identificarlo, podemos observar los eventos de Windows que se generan:
 
-![]({{site.baseurl}}/images/ID.png)
+![ids]({{site.baseurl}}/images/ID.png)
 
 En resumen, para su detección hay que monitorizar los procesos de Windows que van continuados con el siguiente ID:
 
